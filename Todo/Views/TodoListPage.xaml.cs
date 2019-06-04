@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace Todo
@@ -40,5 +41,13 @@ namespace Todo
                 });
             }
 		}
-	}
+
+        private async void OnExportDbFile(object sender, EventArgs e)
+        {
+            await Share.RequestAsync(new ShareFileRequest
+            {
+                File = new ShareFile(App.Database.GetDbPath())
+            });
+        }
+    }
 }

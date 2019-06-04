@@ -6,7 +6,7 @@ namespace Todo
 {
 	public class TodoItemDatabase
 	{
-		readonly SQLiteAsyncConnection database;
+		protected readonly SQLiteAsyncConnection database;
 
 		public TodoItemDatabase(string dbPath)
 		{
@@ -44,6 +44,8 @@ namespace Todo
 		{
 			return database.DeleteAsync(item);
 		}
-	}
+
+        public string GetDbPath() => database.GetConnection().DatabasePath;
+    }
 }
 
